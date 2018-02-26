@@ -1,7 +1,6 @@
 package cc.ibooker.zfragment;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,10 +22,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-import cc.yidai.R;
-import cc.yidai.app_frame.BaseFragmentActivity;
-import cc.yidai.me.myapply.start.StartMyApplyTasksActivity;
-
 /**
  * 任务申请（全部，已申请，不合适，已同意，未通过，已取消，待结算，待评价，完成）
  * create by 邹峰立 on 2016/9/22
@@ -38,8 +33,7 @@ public class ThreeActivity extends FragmentActivity {
     private LinearLayout.LayoutParams indicateParams; // 指示器的布局参数，可设置控件在布局中的相关属性
     private ViewPager mViewPager;
 
-    private TextView backTv;
-    private TextView checkTv;
+
     /**
      * 栏目部分类列表
      */
@@ -86,28 +80,14 @@ public class ThreeActivity extends FragmentActivity {
      */
     private void initView() {
         //初始化导航条
-        mColumnHorizontalScrollView = (HorizontalScrollView) findViewById(R.id.mColumnHorizontalScrollView_IntegralShop);
-        mColumnContent = (LinearLayout) findViewById(R.id.mRadioGroup_content_IntegralShop);
-        mViewPager = (ViewPager) findViewById(R.id.mViewPager_IntegralShop);
+        mColumnHorizontalScrollView = findViewById(R.id.mColumnHorizontalScrollView_IntegralShop);
+        mColumnContent = findViewById(R.id.mRadioGroup_content_IntegralShop);
+        mViewPager = findViewById(R.id.mViewPager_IntegralShop);
         //初始化指示器
-        indicateTV = (TextView) findViewById(R.id.indicateId);
+        indicateTV = findViewById(R.id.indicateId);
         indicateParams = (LinearLayout.LayoutParams) indicateTV.getLayoutParams();
 
-        backTv = (TextView) findViewById(R.id.tv_back);
-        backTv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        checkTv = (TextView) findViewById(R.id.tv_check);
-        checkTv.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent_check = new Intent(ThreeActivity.this, StartMyApplyTasksActivity.class);
-                startActivity(intent_check);
-            }
-        });
+
     }
 
     /**

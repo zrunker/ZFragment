@@ -6,6 +6,13 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- 指示器内容样式 -->
+    <style name="top_category_scroll_view_item_text">
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>
