@@ -1,10 +1,10 @@
-package cc.ibooker.zfragment;
+package cc.ibooker.zfragment.me;
 
 /**
  * 自定义数据带有HashCode
  * create by 邹峰立 on 2016/9/22
  */
-public class ThreeTitleData {
+public class TitleData {
     /**
      * classidid
      */
@@ -59,7 +59,7 @@ public class ThreeTitleData {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        ThreeTitleData other = (ThreeTitleData) obj;
+        TitleData other = (TitleData) obj;
         if (arname == null) {
             if (other.arname != null)
                 return false;

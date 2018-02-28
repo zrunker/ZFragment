@@ -1,4 +1,4 @@
-package cc.ibooker.zfragment;
+package cc.ibooker.zfragment.me;
 
 import android.app.Activity;
 import android.os.Build;
@@ -22,22 +22,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+import cc.ibooker.zfragment.R;
+
 /**
- * 任务申请（全部，已申请，不合适，已同意，未通过，已取消，待结算，待评价，完成）
+ * 测试在Activity中添加多个Fragment，超过整个屏幕
+ * （Android，iOS，Java，PHP，HTML，GO，C，C++）
  * create by 邹峰立 on 2016/9/22
  */
-public class ThreeActivity extends FragmentActivity {
+public class TestActivity extends FragmentActivity {
     private HorizontalScrollView mColumnHorizontalScrollView;
     private LinearLayout mColumnContent;
     private TextView indicateTV;//指示器
     private LinearLayout.LayoutParams indicateParams; // 指示器的布局参数，可设置控件在布局中的相关属性
     private ViewPager mViewPager;
 
-
     /**
      * 栏目部分类列表
      */
-    private ArrayList<ThreeTitleData> mTitleDatas = new ArrayList<>();
+    private ArrayList<TitleData> mTitleDatas = new ArrayList<>();
     /**
      * fragment适配器
      */
@@ -69,7 +71,7 @@ public class ThreeActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myapply);
+        setContentView(R.layout.activity_test);
         initView();
         //初始化列表,从共享参数中获取标题,如果不为空,则设置,如果为空,则从网络获取分类列表
         setChangelView(getData());
@@ -86,14 +88,12 @@ public class ThreeActivity extends FragmentActivity {
         //初始化指示器
         indicateTV = findViewById(R.id.indicateId);
         indicateParams = (LinearLayout.LayoutParams) indicateTV.getLayoutParams();
-
-
     }
 
     /**
      * 当栏目项发生变化时候调用
      */
-    private void setChangelView(ArrayList<ThreeTitleData> lists) {
+    private void setChangelView(ArrayList<TitleData> lists) {
         if (lists == null) {
             //没有数据就通过网络获取
             return;
@@ -109,7 +109,7 @@ public class ThreeActivity extends FragmentActivity {
     /**
      * 获取Column栏目 数据
      */
-    private void initColumnData(ArrayList<ThreeTitleData> lists) {
+    private void initColumnData(ArrayList<TitleData> lists) {
         mTitleDatas = lists;
     }
 
@@ -146,7 +146,7 @@ public class ThreeActivity extends FragmentActivity {
             }
             mColumnContent.addView(localTextView, i, params);
         }
-        //重新设置宽度
+        // 重新设置宽度
         LinearLayout.LayoutParams columuParams = (LinearLayout.LayoutParams) mColumnContent.getLayoutParams();
         columuParams.width = mItemWidth * count;
         mColumnContent.setLayoutParams(columuParams);
@@ -156,9 +156,9 @@ public class ThreeActivity extends FragmentActivity {
 
     //给集合从新排序
     private void sortList() {
-        Collections.sort(mTitleDatas, new Comparator<ThreeTitleData>() {
+        Collections.sort(mTitleDatas, new Comparator<TitleData>() {
             @Override
-            public int compare(ThreeTitleData lhs, ThreeTitleData rhs) {
+            public int compare(TitleData lhs, TitleData rhs) {
                 int a = lhs.getId() - rhs.getId();
                 if (a == 0)
                     return 0;
@@ -177,14 +177,16 @@ public class ThreeActivity extends FragmentActivity {
     private void initFragment() {
         fragments = new ArrayList<>();
         int size = mTitleDatas.size();
-        AllMyApplyTasksFragment tab01 = new AllMyApplyTasksFragment();
-        AppliedMyApplyTasksFragment tab02 = new AppliedMyApplyTasksFragment();
-        FailedMyApplyTasksFragment tab03 = new FailedMyApplyTasksFragment();
-        SuccessMyApplyTasksFragment tab04 = new SuccessMyApplyTasksFragment();
-        CancelMyApplyTasksFragment tab05 = new CancelMyApplyTasksFragment();
-        Pending_settlementMyApplyTasksFragment tab06 = new Pending_settlementMyApplyTasksFragment();
-        To_be_evaluatedMyApplyTasksFragment tab07 = new To_be_evaluatedMyApplyTasksFragment();
-        FinishedMyApplyTasksFragment tab08 = new FinishedMyApplyTasksFragment();
+
+        MeFragmentOne tab01 = new MeFragmentOne();
+        MeFragmentOne tab02 = new MeFragmentOne();
+        MeFragmentOne tab03 = new MeFragmentOne();
+        MeFragmentOne tab04 = new MeFragmentOne();
+        MeFragmentOne tab05 = new MeFragmentOne();
+        MeFragmentOne tab06 = new MeFragmentOne();
+        MeFragmentOne tab07 = new MeFragmentOne();
+        MeFragmentOne tab08 = new MeFragmentOne();
+
         fragments.add(tab01);
         fragments.add(tab02);
         fragments.add(tab03);
@@ -309,46 +311,47 @@ public class ThreeActivity extends FragmentActivity {
         return dm.widthPixels;
     }
 
-    private ArrayList<ThreeTitleData> getData() {
-        ArrayList<ThreeTitleData> newsClassify = new ArrayList<>();
-        ThreeTitleData classify = new ThreeTitleData();
+    // （Android，iOS，Java，PHP，HTML，GO，C，C++）
+    private ArrayList<TitleData> getData() {
+        ArrayList<TitleData> newsClassify = new ArrayList<>();
+        TitleData classify = new TitleData();
         classify.setId(0);
-        classify.setArname("全部");
+        classify.setArname("Android");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(1);
-        classify.setArname("已申请");
+        classify.setArname("iOS");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(2);
-        classify.setArname("不合适");
+        classify.setArname("Java");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(3);
-        classify.setArname("已同意");
+        classify.setArname("PHP");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(4);
-        classify.setArname("已取消");
+        classify.setArname("HTML");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(5);
-        classify.setArname("待结算");
+        classify.setArname("GO");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(6);
-        classify.setArname("待评价");
+        classify.setArname("C");
         newsClassify.add(classify);
 
-        classify = new ThreeTitleData();
+        classify = new TitleData();
         classify.setId(7);
-        classify.setArname("完成");
+        classify.setArname("C++");
         newsClassify.add(classify);
 
         return newsClassify;

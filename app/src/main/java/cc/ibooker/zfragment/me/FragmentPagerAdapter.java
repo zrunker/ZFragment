@@ -1,4 +1,4 @@
-package cc.ibooker.zfragment;
+package cc.ibooker.zfragment.me;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -38,7 +38,7 @@ public class FragmentPagerAdapter extends android.support.v4.app.FragmentPagerAd
     /**
      * 从新设置fragment集合
      *
-     * @param fragments
+     * @param fragments fragment集合
      */
     public void setFragments(ArrayList<Fragment> fragments) {
         if (this.fragments != null) {
