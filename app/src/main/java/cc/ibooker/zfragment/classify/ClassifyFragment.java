@@ -195,7 +195,7 @@ public class ClassifyFragment extends Fragment {
         mViewPager.setOffscreenPageLimit(size);
         if (mAdapetr != null)
             mAdapetr.clearFragment();
-        mAdapetr = new FragmentPagerAdapter(getActivity().getSupportFragmentManager(), fragments);
+        mAdapetr = new FragmentPagerAdapter(getChildFragmentManager(), fragments);
         mViewPager.setAdapter(mAdapetr);
         mViewPager.addOnPageChangeListener(new MyOnPageChangeListener());
     }

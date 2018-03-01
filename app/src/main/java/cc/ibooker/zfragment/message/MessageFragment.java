@@ -107,7 +107,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
         mDatas.add(tab02);
         mDatas.add(tab03);
 
-        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getActivity().getSupportFragmentManager()) {
+        FragmentPagerAdapter adapter = new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public int getCount() {
                 return mDatas.size();
