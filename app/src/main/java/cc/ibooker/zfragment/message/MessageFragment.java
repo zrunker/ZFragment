@@ -30,7 +30,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
     private TextView noticeTv, findTv, linkmanTv;
 
     private ImageView cursor;
-    private int bmpw = 0, mCurrentIndex = 0, mScreen1_5, fixLeftMargin; // bmpw游标宽度,mCurrentIndex表示当前所在页面
+    private int bmpw = 0, mCurrentIndex = 0, mScreen1_5, fixLeftMargin;// bmpw游标宽度,mCurrentIndex表示当前所在页面
     private LinearLayout.LayoutParams params;
 
     @Nullable
@@ -114,8 +114,8 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public Fragment getItem(int arg0) {
-                return mDatas.get(arg0);
+            public Fragment getItem(int positon) {
+                return mDatas.get(positon);
             }
         };
 
@@ -123,9 +123,9 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
-            public void onPageSelected(int arg0) {
+            public void onPageSelected(int positon) {
                 // 滑动结束
-                changeTextView(arg0);
+                changeTextView(positon);
             }
 
             @Override
@@ -156,7 +156,7 @@ public class MessageFragment extends Fragment implements View.OnClickListener {
             }
 
             @Override
-            public void onPageScrollStateChanged(int arg0) {
+            public void onPageScrollStateChanged(int positon) {
                 // TODO Auto-generated method stub
 
             }
