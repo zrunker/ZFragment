@@ -5,7 +5,7 @@
     android:background="#FFF"
     android:orientation="vertical">
 
-    <!-- 指示器 -->
+    <!-- 选项卡 -->
     <HorizontalScrollView
         android:id="@+id/mColumnHorizontalScrollView_IntegralShop"
         android:layout_width="match_parent"
